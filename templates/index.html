@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Board Form{% endblock %}
+
+{% block content %} 
+<h2>Welcome To The Word Finder!</h2>
+<div class='main-content'>
+<table class="center">
+    <tbody>
+    {% for list in board %}
+    <tr class="row">
+    {% for char in list %}
+        <td>{{char}}</td>
+    {% endfor %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<form id="form" method="POST">
+    <input id="guess" type="text" placeholder="Enter a guess" name="guess">
+    <input id="btn" type="submit" value="Submit">
+</form>
+<h3></h3>
+<h1></h1>
+<p>User has played {{ session["count"] }} times(s)</p>
+<p>Highest Score: <b>{{ session["highest_score"] }}</b></p>
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.js"></script>
+<script src="/static/app.js"></script>
+</div>
+{% endblock %}
